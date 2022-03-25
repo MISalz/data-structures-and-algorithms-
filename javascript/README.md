@@ -2,6 +2,8 @@
 
 ## Language: `JavaScript`
 
+1,3,5,8,9,10
+
 ### Folder and Challenge Setup
 
 Each type of code challenge has slightly different instructions. Please refer to the notes and examples below for instructions for each DS&A assignment type.
