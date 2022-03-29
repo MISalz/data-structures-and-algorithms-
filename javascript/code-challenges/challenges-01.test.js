@@ -10,6 +10,12 @@ Use `forEach` to loop over the input array and work with each value.  Push the n
 
 const addOne = (arr) => {
   // Solution code here...
+  let arrTwo = [];
+
+  arr.forEach(value => {
+    arrTwo.push(value + 1);
+  });
+  return arrTwo;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -22,7 +28,10 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 
 const addExclamation = (arr) => {
   // Solution code here...
-  let arr2 = arr + '!';
+  let arr2 = [];
+  arr.forEach(item => {
+    arr2.push(item + '!');
+  });
   return arr2;
 };
 
@@ -36,7 +45,10 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 
 const allUpperCase = (arr) => {
   // Solution code here...
-  let newArr= arr.toUpperCase();
+  let newArr = [];
+  arr.forEach(item => {
+    newArr.push(item.toUpperCase());
+  });
   return newArr;
 };
 
@@ -52,12 +64,16 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 
 const greeting = (word) => {
   // Solution code here...
-  return word.toUpperCase()+'!';
+  let hi = [];
+  arr.forEach(word => {
+    hi.push(word.toUpperCase() + '!');
+  });
+  return hi;
 };
 
 const speaker = (words, callback) => {
   // Solution code here...
-  
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -110,7 +126,7 @@ This function should use forEach to populate your grocery list based on the stor
 const createList = (availableItems) => {
   // Solution code here...
   let list = [];
-  availableItems.forEach(function(value) {
+  availableItems.forEach(function (value) {
     if (value.available === true) {
       list.push(value.name);
     }
@@ -135,12 +151,12 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
-  let arr2=[];
-  arr.forEach(function(value){
-    if ((value % 3 === 0) && (value % 5 === 0)){arr2.push('Fizz Buzz');}
-    else if (value % 5 ===0){arr2.push('Buzz');}
-    else if (value % 3 ===0){arr2.push('Fizz');}
-    else {arr2.push(value);}
+  let arr2 = [];
+  arr.forEach(function (value) {
+    if ((value % 3 === 0) && (value % 5 === 0)) { arr2.push('Fizz Buzz'); }
+    else if (value % 5 === 0) { arr2.push('Buzz'); }
+    else if (value % 3 === 0) { arr2.push('Fizz'); }
+    else { arr2.push(value); }
   });
   return arr2;
 };

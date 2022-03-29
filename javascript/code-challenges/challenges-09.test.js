@@ -62,9 +62,11 @@ HR has asked you to change the data to make it easier to print so that it looks 
 
 const updateNumbers = (obj) => {
   // Solution code here...
+  const newArr = [];
+  Object.keys(obj).forEach(key => {
+    newArr.push(`${key}:${ob[key]}`);
+  })
 };
-
-
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
@@ -138,11 +140,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  for (let i=0; i < arr.length; i++){
-    if (Object.values(arr[i]).includes(character)){
-      return arr[i].children.length !==0;
-    }
-  }
+  // for (let i=0; i < arr.length; i++){
+  //   if (Object.values(arr[i]).includes(character)){
+  //     return arr[i].children.length !==0;
+  //   }
+  // }
+  let kid = 0;
+  arr.forEach (person =>{
+    if(person.name === charcter){
+      Object.keys(person.forEach((key,index)=>{if(key==='children'){kid = Object.values(person)[index].length;}}),
+      })
+    });
+    return kid ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -243,7 +252,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return an an array of names and numbers', () => {
     const startingObj = {
       'Grace Hopper': '222-303-5938',

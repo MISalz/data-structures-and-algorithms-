@@ -2,7 +2,7 @@
 
 ## Language: `JavaScript`
 
-1,3,5,8,9,10
+1,3,5,8,10
 
 ### Folder and Challenge Setup
 
