@@ -65,6 +65,10 @@ Write a function named containsW that takes in a string. This function should us
 
 const containsW = (str) => {
   // Solution code here...
+  if (str.match(/[w]/g)) {
+    return true;
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -81,6 +85,8 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
+  return /\d/.test(input);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -92,6 +98,10 @@ Write a function named containsWorld that takes in a string or number of any len
 
 const containsWorld = (input) => {
   // Solution code here...
+  if (input.match(/(hello world)/g)) {
+    return true;
+  }
+  return false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -104,6 +114,9 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
+  let reg = /[A-Z][a-zA-Z]*/gm;
+  let capitals = str.match(reg);
+  return capitals || [];
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,6 +127,8 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
+  let reg = /^[A-J]/;
+  return arr.filter(city => reg.test(city));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -189,14 +204,14 @@ Run your tests from the console: jest challenges-04.solution.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should sort the characters by number of children', () => {
     expect(sortByChildren(characters)[0].name).toStrictEqual('Euron');
     expect(sortByChildren(characters)[0].children.length).toStrictEqual(0);
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should return true if the input contains a lower case w', () => {
     expect(containsW('hello world')).toBe(true);
   });
@@ -208,7 +223,7 @@ xdescribe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
@@ -222,7 +237,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true if the input contains the word "world" in lower case', () => {
     expect(containsWorld('hello world')).toBe(true);
   });
@@ -234,7 +249,7 @@ xdescribe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
@@ -247,7 +262,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {

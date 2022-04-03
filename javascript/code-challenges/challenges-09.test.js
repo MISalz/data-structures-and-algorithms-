@@ -10,6 +10,9 @@ E.g. [4,2,7,5,9,2] -> 9
 ------------------------------------------------------------------------------------------------ */
 const maxInArray = (arr) => {
   // Solution code here...
+  return arr.reduce((a, b) => {
+    return Math.max(a, b);
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -19,7 +22,8 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
@@ -37,9 +41,7 @@ Write a function named checkValues that takes in an object and a value and retur
 
 ------------------------------------------------------------------------------------------------ */
 
-const checkValues = (obj, value) => {
-  // Solution code here...
-};
+const checkValues = (obj, value) => Object.values(obj).includes(value);
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -65,7 +67,7 @@ const updateNumbers = (obj) => {
   const newArr = [];
   Object.keys(obj).forEach(key => {
     newArr.push(`${key}:${ob[key]}`);
-  })
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -120,7 +122,7 @@ const characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  arr.forEach(obj =>{
+  arr.forEach(obj => {
     houses.push(obj.house);
   });
   return houses;
@@ -140,18 +142,17 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  // for (let i=0; i < arr.length; i++){
-  //   if (Object.values(arr[i]).includes(character)){
-  //     return arr[i].children.length !==0;
-  //   }
-  // }
   let kid = 0;
-  arr.forEach (person =>{
-    if(person.name === charcter){
-      Object.keys(person.forEach((key,index)=>{if(key==='children'){kid = Object.values(person)[index].length;}}),
-      })
-    });
-    return kid ? true : false;
+  arr.forEach(person => {
+    if (person.name === character) {
+      Object.keys(person).forEach((key, index) => {
+        if (key === 'children') {
+          kid = Object.values(person)[index].length;
+        }
+      });
+    }
+  });
+  return kid ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -227,7 +228,7 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the maximum number found', () => {
     expect(maxInArray([4, 2, 7, 5, 9, 2])).toStrictEqual(9);
   });
@@ -242,7 +243,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return true if the value is in the object', () => {
     expect(checkValues({ class: '301' }, '301')).toBe(true);
   });
